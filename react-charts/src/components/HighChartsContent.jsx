@@ -55,34 +55,41 @@ function HighChartsContent() {
   return (
     <>
       <section>
-        <div className='bg-slate-200 flex w-full space-x-4'>
-          <label>Category</label>
-          <select value={selectedCategory} onChange={handleCategoryChange}>
-            {Object.keys(Category[0]).map(category => (
-              <option key={category} value={category}>{category}</option>
-            ))}
-          </select>
-
-          <label>Product</label>
-          <select value={selectedProduct} onChange={handleProductChange}>
-            {Category[0][selectedCategory][0] && Object.keys(Category[0][selectedCategory][0]).map(product => (
-              <option key={product} value={product}>{product}</option>
-            ))}
-          </select>
-
-          <label>Brand</label>
-          <select
-            value={selectedBrand}
-            onChange={handleBranchChange}
-            disabled={!selectedProduct}
-          >
-            {selectedProduct &&
-              Category[0][selectedCategory][0] &&
-              Category[0][selectedCategory][0][selectedProduct] &&
-              Object.keys(Category[0][selectedCategory][0][selectedProduct][0]).map(brandName => (
-                <option key={brandName} value={brandName}>{brandName}</option>
+        <div className='bg-slate-200 flex w-full justify-around'>
+          <div>
+            <label className='mr-5'>Category</label>
+            <select value={selectedCategory} onChange={handleCategoryChange}>
+              {Object.keys(Category[0]).map(category => (
+                <option key={category} value={category}>{category}</option>
               ))}
-          </select>
+            </select>
+          </div>
+
+          <div>
+            <label className='mr-5'>Product</label>
+            <select value={selectedProduct} onChange={handleProductChange}>
+              {Category[0][selectedCategory][0] && Object.keys(Category[0][selectedCategory][0]).map(product => (
+                <option key={product} value={product}>{product}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className='mr-5'>Brand</label>
+            <select
+              value={selectedBrand}
+              onChange={handleBranchChange}
+              disabled={!selectedProduct}
+            >
+              {selectedProduct &&
+                Category[0][selectedCategory][0] &&
+                Category[0][selectedCategory][0][selectedProduct] &&
+                Object.keys(Category[0][selectedCategory][0][selectedProduct][0]).map(brandName => (
+                  <option key={brandName} value={brandName}>{brandName}</option>
+                ))}
+            </select>
+          </div>
+
         </div>
       </section>
 
